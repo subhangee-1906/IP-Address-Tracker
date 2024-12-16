@@ -1,79 +1,71 @@
-## Table of contents
-
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-- [Author](#author)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+# IP Address Tracker
 
 ## Overview
+The **IP Address Tracker** is a web application designed to provide geographical and network-related details about an IP address. This tool is essential for users who need to track IP addresses for analytics, security, or personal curiosity.
 
-### The challenge
+## Features
+- Retrieve geographical location (city, region, country).
+- Display network information, including ISP and timezone.
+- Interactive map to visually locate the IP address.
+- User-friendly interface with a search functionality.
+- Support for both IPv4 and IPv6 addresses.
 
-Users should be able to:
+## Technologies Used
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: Node.js (optional, if server-side functionality is required)
+- **API Integration**:
+  - IP Geolocation API (e.g., [ipify](https://geo.ipify.org) or [ipstack](https://ipstack.com)) for retrieving IP data.
+  - Mapping API (e.g., [Leaflet.js](https://leafletjs.com) or Google Maps) for visual representation.
 
-- View the optimal layout for each page depending on their device's screen size
-- See hover states for all interactive elements on the page
-- See their own IP address on the map on the initial page load
-- Search for any IP addresses or domains and see the key information and location
+## Installation
 
-### Screenshot
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/username/ip-address-tracker.git
+   cd ip-address-tracker
+   ```
 
-![](./images/screenshot.png)
+2. Install dependencies (if backend is implemented):
+   ```bash
+   npm install
+   ```
 
-### Links
+3. Add your API keys:
+   - Replace placeholder keys in the `config.js` file with your own API keys for the IP Geolocation and Mapping APIs.
 
-- [Solution URL](https://www.frontendmentor.io/solutions/ip-address-tracker-using-vanilla-js-Yt3gCTWThI)
--  [Live URL](https://ip-address-tracker-nine-chi.vercel.app/)
+4. Start the application:
+   - For a static implementation: Open `index.html` in your browser.
+   - For a dynamic implementation: Run the server and access the application via `http://localhost:3000`:
+     ```bash
+     npm start
+     ```
 
-## My process
+## Usage
+1. Enter the desired IP address or domain in the search bar.
+2. Click the "Track" button.
+3. View the details such as location, ISP, and timezone on the page.
+4. Use the interactive map to visually explore the location.
 
-### Built with
+## Screenshots
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- Mobile-first workflow
+### Homepage
+![Homepage](screenshots/homepage.png)
 
+### Search Results
+![Search Results](screenshots/search-results.png)
 
-### What I learned
-This challenge really helped me get a solid grasp on using APIs.
-Some code I'm proud of:
-```js
-fetch("https://ipapi.co/json/")
-  .then((res) => res.json())
-  .then((data) => renderresult(data))
-  .catch((error) => displayError(error));
+## Contributions
+Contributions are welcome! If you'd like to contribute:
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature-name
+   ```
+3. Commit your changes and push to your forked repository.
+4. Open a pull request.
 
-function renderresult(data) {
-  if (data.error) {
-    throw `${data.reason}`;
-  }
-  const ipadd = document.getElementById("ipadd");
-  const location = document.getElementById("location");
-  const timezone = document.getElementById("timezone");
-  const isprovider = document.getElementById("isprovider");
-  ipadd.innerHTML = data.ip;
-  isprovider.innerHTML = data.org;
-  location.innerHTML = `${data.city}, ${data.region}, ${data.country_name}`;
-  if (data.utc_offset !== null) {
-    timezone.innerHTML =
-      "UTC: " + data.utc_offset.slice(0, 3) + ":" + data.utc_offset.slice(3);
-  } else {
-    timezone.innerHTML = data.timezone;
-  }
-  map.setView([data.latitude, data.longitude], 13);
-  marker.setLatLng([data.latitude, data.longitude]);
-  marker.bindPopup(`<b>${data.ip}</b>`).openPopup();
-}
-```
+## License
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
-## Author
-- Website - [Jitesh117](https://my-project-green-zeta.vercel.app/)
-- Frontend Mentor - [@Jitesh117](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@Jitesh_117](https://www.twitter.com/yourusername)
+---
+
